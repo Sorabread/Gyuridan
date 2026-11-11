@@ -145,6 +145,18 @@
   .hrs{font-size:11.5px;font-weight:400;background:#FFF4E6;color:#9A7240;border-radius:999px;padding:2px 8px}
   .hrs.tbd{background:#F4EEEA;color:#B5A69E}
   .hrs.off{background:#FFE8EC;color:#C25570}
+  .hbox{margin-top:12px;background:#fff;border-radius:18px;padding:12px 12px 10px;box-shadow:0 2px 10px rgba(232,170,150,.15)}
+  .hlbl{font-size:13px;font-weight:700;margin:0 2px 8px}
+  .hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:6px}
+  .hchip{background:#FFF8F1;border-radius:12px;padding:6px 2px;text-align:center;line-height:1.25}
+  .hchip b{display:block;font-size:14px;color:#7D6A63}
+  .hchip b small{font-size:10px;font-weight:400;margin-left:2px;opacity:.75}
+  .hchip span{display:block;font-size:11.5px;color:#9A7240}
+  .hchip.off{background:#FFE8EC}
+  .hchip.off span,.hchip.off b{color:#C25570}
+  .hchip.bd{box-shadow:inset 0 0 0 2px #FFC4D3}
+  .hchip.td{box-shadow:inset 0 0 0 2px #F3D08A}
+  .hnote{font-size:11.5px;color:var(--soft);margin:8px 2px 0;line-height:1.5}
   .s-when{flex-wrap:wrap}
   .s-when span.offs{color:#C25570}
   .s-when span.tbd{color:#B5A69E}
@@ -403,28 +415,28 @@
   };
 
   var EVENTS = [
-    {venue:'타래퀸', name:'예스, 마담!', id:'@15thPKWZ', s:11, e:18, hours:'평일 14:00–23:00 · 주말 12:00–23:00', off:'월요일 휴무 (11.16)', color:'rose', emoji:'👑',
+    {venue:'타래퀸', h:{d:'14:00–23:00',0:'12:00–23:00',6:'12:00–23:00',1:'휴무'}, hnote:'라스트오더 22:00', name:'예스, 마담!', id:'@15thPKWZ', s:11, e:18, color:'rose', emoji:'👑',
      tags:['#이번_주에_PKW_생일이래','#예스_마담_당연히_참여하죠']},
-    {venue:'로벨리아듀', name:'규원꽃', id:'@GSKW_flower', s:13, e:18, color:'lav', emoji:'💐',
+    {venue:'로벨리아듀', h:{d:'10:00–21:00'}, name:'규원꽃', id:'@GSKW_flower', s:13, e:18, color:'lav', emoji:'💐',
      tags:['#오늘이_바로_규원데이야','#전군_축하하라','#GSKW_HBD']},
-    {venue:'타르트앤', name:'감성규원전 Green', id:'@ForeverPkw1117', s:13, e:19, color:'mint', emoji:'🍃',
+    {venue:'타르트앤', h:{d:'12:00–21:00',1:'휴무'}, hnote:'오픈 시간은 사장님 사정에 따라 바뀔 수 있어요', name:'감성규원전 Green', id:'@ForeverPkw1117', s:13, e:19, color:'mint', emoji:'🍃',
      tags:['#20261117감성규원전','#20261117_HBD_Kyuwon','#내가원하는건그저박규원']},
-    {venue:'청킹', name:'𝐇𝐀𝐏𝐏𝐘 𝐊𝐘𝐔𝐖𝐎𝐍 𝐃𝐀𝐘', id:'@lov2kyu1_1117', s:13, e:20, color:'sage', emoji:'🎉',
+    {venue:'청킹', h:{d:'12:00–20:00',1:'휴무'}, name:'𝐇𝐀𝐏𝐏𝐘 𝐊𝐘𝐔𝐖𝐎𝐍 𝐃𝐀𝐘', id:'@lov2kyu1_1117', s:13, e:20, color:'sage', emoji:'🎉',
      tags:['#해피규원데이','#VIVA_축제를즐겨']},
-    {venue:'그린풀', name:'감성규원전 Red', id:'@ForeverPkw1117', s:14, e:20, hours:'화–금 11:00–20:00 · 주말 12:00–20:00', off:'월요일 휴무 (11.16)', color:'red', emoji:'🌹',
+    {venue:'그린풀', h:{d:'11:00–20:00',0:'12:00–20:00',6:'12:00–20:00',1:'휴무'}, name:'감성규원전 Red', id:'@ForeverPkw1117', s:14, e:20, color:'red', emoji:'🌹',
      tags:['#20261117감성규원전','#20261117_HBD_Kyuwon','#내가원하는건그저박규원'],
      note:'※ Red는 아이디가 따로 없어서 감성규원전 Green 계정으로 넣어뒀어요'},
-    {venue:'에델바이스', name:"KW's Shining Garden", id:'@blossoms_2_star', s:15, e:17, color:'sky', emoji:'⭐',
+    {venue:'에델바이스', h:{d:'10:00–20:00',0:'14:00–18:00'}, name:"KW's Shining Garden", id:'@blossoms_2_star', s:15, e:17, color:'sky', emoji:'⭐',
      tags:['#20261117_별에게_닿는_꽃','#2026_Congrats_on_Kyuwon_Birthday']},
-    {venue:'포토랩플러스', name:'별사탕 1117스푼', id:'@ST4RCANDY_1117', s:15, e:17, color:'butter', emoji:'🍬',
+    {venue:'포토랩플러스', h:{d:'24시간'}, name:'별사탕 1117스푼', id:'@ST4RCANDY_1117', s:15, e:17, color:'butter', emoji:'🍬',
      tags:['#규원_생일이라는_이유로','#박규원짱스타캔디']},
-    {venue:'지구캣', name:'𝕂𝕐𝕌𝕎𝕆ℕ 𝔹𝔸𝕊𝔼𝔹𝔸𝕃𝕃 ℂ𝕃𝕌𝔹🧢', id:'@lov2pkw', s:15, e:22, color:'aqua', emoji:'⚾',
+    {venue:'지구캣', h:{d:'10:00–20:00',6:'11:00–20:00',0:'12:00–19:00'}, hnote:'라스트오더는 마감 30분 전', name:'𝕂𝕐𝕌𝕎𝕆ℕ 𝔹𝔸𝕊𝔼𝔹𝔸𝕃𝕃 ℂ𝕃𝕌𝔹🧢', id:'@lov2pkw', s:15, e:22, color:'aqua', emoji:'⚾',
      tags:['#HAPPY_KYUWON_DAY','#규원이네_야구부_모집중']},
-    {venue:'Nook haus', name:'𝑳𝒐𝒗𝒆 𝑨𝒍𝒘𝒂𝒚𝒔', id:'@hbd_1117', s:16, e:22, color:'apricot', emoji:'🏠',
+    {venue:'Nook haus', h:{d:'11:00–23:00'}, name:'𝑳𝒐𝒗𝒆 𝑨𝒍𝒘𝒂𝒚𝒔', id:'@hbd_1117', s:16, e:22, color:'apricot', emoji:'🏠',
      tags:['#HBD_1117_KYUWON']},
-    {venue:'크림슨파더', name:'도토리마을', id:'@ALWAYS_kyU_1117', s:17, e:20, hours:'11:00–21:00 (월 ~19:00)', color:'peach', emoji:'🌰',
+    {venue:'크림슨파더', h:{d:'11:00–21:00',1:'11:00–19:00'}, name:'도토리마을', id:'@ALWAYS_kyU_1117', s:17, e:20, color:'peach', emoji:'🌰',
      tags:['#Toevery_KYU_weloved','#규원의_이야기를_들려줘']},
-    {venue:'리오라플라워', name:'More White and Red', id:'@pkw_blossom', s:17, e:17, time:'13:00 – 19:00', color:'pink', emoji:'🌷',
+    {venue:'리오라플라워', h:{d:'13:00–19:00'}, hnote:'11.17 하루만 열려요', name:'More White and Red', id:'@pkw_blossom', s:17, e:17, color:'pink', emoji:'🌷',
      tags:['#감성배우와_사랑이_날_완전하게_만들어','#박규원_있는_한_지지_않으리_261117을_축하하라']}
   ];
 
@@ -432,10 +444,53 @@
   // 2026년 11월 1일은 일요일
   function dow(d){ return (d-1)%7; }
   function fmt(d){ return '11.'+d+'('+DOW[dow(d)]+')'; }
-  function hoursPill(ev){
-    if (ev.time) return '<span class="hrs">⏰ '+ev.time+'</span>';
-    if (ev.hours) return '<span class="hrs">⏰ '+ev.hours+'</span>'+(ev.off?'<span class="hrs off">🚫 '+ev.off+'</span>':'');
-    return '<span class="hrs tbd">⏰ 시간 확인 중</span>';
+  // ---------- 운영시간 ----------
+  var DOW_ORDER = [1,2,3,4,5,6,0]; // 월~일 순서
+  function hoursOn(ev, d){ var h = ev.h||{}; return (h[dow(d)]!==undefined ? h[dow(d)] : h.d) || ''; }
+  function shortH(t){
+    if (!t || t==='휴무' || t==='24시간') return t;
+    var m = t.match(/^(\d{1,2}):(\d{2})–(\d{1,2}):(\d{2})$/);
+    if (!m) return t;
+    if (m[2]==='00' && m[4]==='00') return (+m[1])+'–'+(+m[3])+'시';
+    return t;
+  }
+  function hoursSummary(ev){
+    var h = ev.h||{}; if (!h.d) return '';
+    var parts = [shortH(h.d)];
+    var closed = [], other = [];
+    DOW_ORDER.forEach(function(w){
+      if (h[w]===undefined) return;
+      if (h[w]==='휴무') closed.push(DOW[w]); else other.push(DOW[w]+' '+shortH(h[w]));
+    });
+    if (other.length) parts.push(other.join(' · '));
+    if (closed.length) parts.push(closed.join('·')+' 휴무');
+    return parts.join(' · ');
+  }
+  function hoursPill(ev, day){
+    if (!ev.h) return '<span class="hrs tbd">⏰ 시간 확인 중</span>';
+    if (day){
+      var t = hoursOn(ev, day);
+      return t==='휴무' ? '<span class="hrs off">🚫 이날 휴무</span>' : '<span class="hrs">⏰ '+shortH(t)+'</span>';
+    }
+    var hasClosed = false;
+    for (var d=ev.s; d<=ev.e; d++) if (hoursOn(ev,d)==='휴무') hasClosed = true;
+    return '<span class="hrs">⏰ '+hoursSummary(ev)+'</span>';
+  }
+  function hoursBlock(ev, col){
+    if (!ev.h) return '';
+    var chips = '';
+    for (var d=ev.s; d<=ev.e; d++){
+      var t = hoursOn(ev, d), off = t==='휴무';
+      chips += '<div class="hchip'+(off?' off':'')+(d===BDAY?' bd':'')+(d===TODAY?' td':'')+'">'+
+        '<b>'+d+'<small>'+DOW[dow(d)]+'</small></b><span>'+(off?'휴무':shortH(t))+'</span></div>';
+    }
+    var notes = [];
+    if (ev.hnote) notes.push(ev.hnote);
+    return '<div class="hbox">'+
+      '<div class="hlbl" style="color:'+col[1]+'">⏰ 운영시간</div>'+
+      '<div class="hgrid">'+chips+'</div>'+
+      (notes.length?'<div class="hnote">· '+notes.map(esc).join('<br>· ')+'</div>':'')+
+    '</div>';
   }
   function period(ev){ return ev.s===ev.e ? fmt(ev.s) : fmt(ev.s)+' – '+fmt(ev.e); }
   function esc(t){ return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
@@ -612,9 +667,9 @@
       card.innerHTML =
         '<div class="chip" style="background:'+col[0]+'">'+ev.emoji+'</div>'+
         '<div class="body">'+
-          '<div class="venue" style="color:'+col[1]+'">📍 '+esc(ev.venue)+hoursPill(ev)+'</div>'+
+          '<div class="venue" style="color:'+col[1]+'">📍 '+esc(ev.venue)+hoursPill(ev, state.all?null:state.sel)+'</div>'+
           '<div class="ev">'+esc(ev.name)+'</div>'+
-          '<div class="meta"><span>🗓 '+period(ev)+(ev.time?' · '+ev.time:'')+'</span><span class="at">'+esc(ev.id)+'</span></div>'+
+          '<div class="meta"><span>🗓 '+period(ev)+'</span><span class="at">'+esc(ev.id)+'</span></div>'+
         '</div>'+
         (getV(ev) ? '<span class="cv" style="background:'+col[0]+';color:'+col[1]+'">🐾 '+getV(ev)+'회</span>' : '')+
         '<div class="arrow">›</div>';
@@ -802,8 +857,8 @@
       '<span class="s-badge" style="background:'+col[0]+';color:'+col[1]+'">'+ev.emoji+' 생일카페</span>'+
       '<div class="s-venue" style="color:'+col[1]+'">📍 '+esc(ev.venue)+'</div>'+
       '<div class="s-ev">'+esc(ev.name)+'</div>'+
-      '<div class="s-when"><span>🗓 '+period(ev)+'</span>'+(ev.time?'<span>⏰ '+ev.time+'</span>':ev.hours?'<span>⏰ '+ev.hours+'</span>'+(ev.off?'<span class="offs">🚫 '+ev.off+'</span>':''):'<span class="tbd">⏰ 운영시간 확인 중</span>')+'</div>'+
-      (ev.hours&&!ev.time?'<div class="note">※ 평소 영업시간 기준이에요. 생카 운영시간은 이벤트 계정 공지를 꼭 확인해 주세요.</div>':'')+
+      '<div class="s-when"><span>🗓 '+period(ev)+'</span></div>'+
+      hoursBlock(ev, col)+
       '<div class="visit" style="background:'+col[2]+';color:'+col[1]+';box-shadow:inset 0 0 0 2px '+col[0]+'">'+
         '<div><div class="vlbl">🐾 방문 기록</div><div class="vnum"><b id="vCount">'+getV(ev)+'</b><span id="vState">'+(getV(ev)?'회 방문했어요':'회 · 아직 방문 전')+'</span></div></div>'+
         '<div class="stepper"><button id="vMinus" aria-label="방문 횟수 빼기" style="color:'+col[1]+'"'+(getV(ev)?'':' disabled')+'>−</button>'+
